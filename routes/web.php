@@ -14,10 +14,6 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-//Route::post('/add-task', function () {
-//    return view('task');
-//});
 
 Route::get('/', [TaskController::class, 'index']);
-Route::post('/add-task', [TaskController::class, 'store']);
 Route::get('/update-task', [TaskController::class, 'update']);

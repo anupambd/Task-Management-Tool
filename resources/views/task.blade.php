@@ -47,9 +47,8 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            {{--<h1 class="display-3">Hello, world!</h1>--}}
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('add-task') }}" enctype="multipart/form-data">
-            {{--<form id="todo-form">--}}
+            {{--<form class="form-horizontal" role="form" method="POST" action="{{ url('add-task') }}" enctype="multipart/form-data">--}}
+            <form id="todo-form">
                 {{ csrf_field() }}
                 <div class="d-flex align-items-center justify-content-center">
                     <div class="input-group mb-3 mr-4 col-md-4">
@@ -135,14 +134,6 @@
     }
 
 
-//    $('#winston_2').draggable({
-//            revert: 'invalid',
-//            stop: function(){
-//                $(this).draggable('option','revert','invalid');
-//            }
-//        });
-
-
 
     $("#progresszone").droppable({
         drop: function(event, ui) {
@@ -199,16 +190,15 @@
     $('#todo-form').on('submit', function(e) {
         e.preventDefault();
         var task_detail = $('#task_detail').val();
-        alert(task_detail);
         $.ajax({
             headers: {
                 'X-CSRF-TOKEN': "{{csrf_token()}}",
             },
             type: "POST",
-            url: '/api/add-task',
+            url: 'api/add-task',
             data: {task_detail:task_detail},
             success: function( msg ) {
-                alert( 'fgfdgdf' );
+                location.reload();
             }
         });
     });

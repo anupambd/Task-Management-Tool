@@ -27,7 +27,8 @@ class TaskController extends Controller
         $task->status_id = 1;
         $task->save();
         $allData = Task::get();
-        return redirect('/');
+        return $allData;
+//        return redirect('/');
 //        return view('task',compact('allData'));
     }
 
